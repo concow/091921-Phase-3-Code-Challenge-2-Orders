@@ -71,13 +71,12 @@ puts order1.print_invoice
 puts
 
 puts "Order#deliver"
-#sets the Order#delivered attribute to true and the Order#status attribute to "delivered"
 puts order1.deliver
 puts
         #PRODUCT ASSOCIATION
 puts "Product#create_order(customer, num_items)"
 # new_order = order1.create_order(customer1, 2)
-puts product3.create_order(customer1, 1)
+puts product3.create_order(customer1, 2)
 puts
 
 puts "Product#print_all_invoices"
@@ -92,10 +91,12 @@ puts "Product#volume"
 # puts product1.orders.map(&:status)
 puts product1.volume
 puts
+
 #         #CUSTOMER ASSOCIATION
 puts "Customer#cancel_order(order)"
 puts customer1.cancel_order(order2)
-# puts
+# puts customer1.update(status: "cancelled")
+puts
 
 puts "Customer#total_spent"
 # puts customer1.total_spent

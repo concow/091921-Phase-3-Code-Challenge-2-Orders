@@ -4,7 +4,7 @@ class Customer < ActiveRecord::Base
 
     def cancel_order(order)
         if order
-            self.orders.update(status: "cancelled")
+            return self.orders.update(status: "cancelled")
         end
     end
 
