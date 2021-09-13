@@ -11,9 +11,11 @@ class Order < ActiveRecord::Base
     end
 
     def deliver
-        if (self.delivered == "false")
-            return self.update.delivered == "true" && self.update.status == "delivered"
+         if (self.delivered == true)
+             self.status = "delivered"
+             puts "Your order has been delivered"
+         else
+            puts "Your order is still in progress"
         end
-        puts "#{self.delivered}"
     end
 end

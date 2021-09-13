@@ -3,15 +3,16 @@ class Customer < ActiveRecord::Base
     has_many :products, through: :orders
 
     def cancel_order(order)
-        order = self.orders.find_by_customer_id(customer.id)
-        order.destroy
-        # self.orders
-        # .filter {|r| r.customer.id == customer.id}
-        # .each {|r| r.destroy}
-
+        if order
+            self.orders.update(status: "cancelled")
+        end
     end
 
     def total_spent
-        self.sum(:orders)
+        # self.orders.sum(&:price)
+        check = self.products.sum(&:price)
+        if check != "cancelled"
+            return check
+        end
     end
 end
